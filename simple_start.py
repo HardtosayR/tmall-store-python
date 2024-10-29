@@ -1,9 +1,18 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+from selenium.webdriver import Chrome
+from selenium.webdriver import ChromeOptions
 
-# 设置Chrome驱动（这里假设你在环境路径中放置了驱动程序）
-driver = webdriver.Chrome()  # 替换成正确的路径或在环境变量中设置好
+
+#去除webdriver一些特征
+option = ChromeOptions()
+option.add_experimental_option('excludeSwitches', ['enable-automation'])
+option.add_argument("--disable-blink-features")
+option.add_argument("--disable-blink-features=AutomationControlled")
+option.add_argument("--headless")
+# 设置Chrome驱动
+driver = Chrome(options=option)
 
 # 打开天猫店铺页面
 url = 'https://shop59996859.taobao.com/?spm=a230r.7195193.1997079397.28.591551f0oWOTfE'
